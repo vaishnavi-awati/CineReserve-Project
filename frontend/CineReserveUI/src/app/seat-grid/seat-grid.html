@@ -1,0 +1,50 @@
+<div class="booking-screen-container">
+  <header class="movie-header">
+    <span class="now-showing-tag">NOW SHOWING</span>
+    <h1>INTERSTELLAR</h1>
+    <p class="hall-info">IMAX Hall • 06:30 PM</p>
+    
+    <div class="screen-indicator">
+      <div class="screen-line"></div>
+      <p class="screen-text">STAGE / SCREEN THIS WAY</p>
+    </div>
+  </header>
+
+  <main class="seats-area">
+    <div class="seats-grid">
+      
+      <button *ngFor="let seat of seats" 
+              class="seat-btn"
+              [class.available]="seat.status === 'available'"
+              [class.selected]="seat.status === 'selected'"
+              [class.reserved]="seat.status === 'reserved'"
+              [disabled]="seat.status === 'reserved' || seat.status === 'selected'"
+              (click)="toggleSeatSelection(seat)">
+        {{ seat.number }}
+      </button>
+
+    </div>
+
+    <div class="legend-container">
+      <div class="legend-item">
+        <span class="legend-dot available-dot"></span>
+        <span class="legend-text">Available</span>
+      </div>
+      <div class="legend-item">
+        <span class="legend-dot selected-dot"></span>
+        <span class="legend-text">Sold / Selected</span>
+      </div>
+      <div class="legend-item">
+        <span class="legend-dot reserved-dot"></span>
+        <span class="legend-text">Reserved</span>
+      </div>
+    </div>
+  </main>
+
+  <footer class="pricing-panel">
+    <div class="price-card">
+      <p class="ticket-label">Ticket Price: <span class="price-amount">₹250</span></p>
+      <p class="disclaimer-text">*Taxes and fees calculated at checkout</p>
+    </div>
+  </footer>
+</div>
